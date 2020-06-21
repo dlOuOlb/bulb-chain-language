@@ -1,0 +1,61 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Bulb Chain",
+	"scopeName": "source.bch",
+	"patterns":
+	[
+		{ "include": "#comments" },
+		{ "include": "#nodes" },
+		{ "name": "invalid.illegal.bch", "match": "[^\\s]" }
+	],
+	"repository":
+	{
+		"comments": { "name": "comment.block.bch", "begin": "\\(", "end": "\\)" },
+		"nodes":
+		{
+			"name": "keyword.control.less.bch",
+			"begin": "[@*]", "end": "(?<=[>}\\]])", "patterns":
+			[
+				{ "include": "#comments" },
+				{ "include": "#zones" },
+				{ "include": "#flows" },
+				{ "include": "#links" },
+				{ "name": "entity.name.class.bch", "match": "((?<=[@*])\\s*\\w+)\\b" },
+				{ "name": "invalid.illegal.bch", "match": "[^\\s]" }
+			]
+		},
+		"zones":
+		{
+			"name": "constant.numeric.bch",
+			"begin": "\\[", "end": "\\]", "patterns":
+			[
+				{ "include": "#comments" },
+				{ "include": "#nodes" },
+				{ "name": "invalid.illegal.bch", "match": "[^\\s\\]]" }
+			]
+		},
+		"flows":
+		{
+			"name": "variable.other.bch",
+			"begin": "{", "end": "}", "patterns":
+			[
+				{ "include": "#comments" },
+				{ "include": "#flows" },
+				{ "include": "#links" },
+				{ "name": "constant.character.bch", "match": "[:\\$\\|=+~-]" },
+				{ "name": "invalid.illegal.bch", "match": "[^\\s}]" }
+			]
+		},
+		"links":
+		{
+			"name": "constant.character.escape.bch",
+			"begin": "<", "end": ">", "patterns":
+			[
+				{ "include": "#comments" },
+				{ "name": "invalid.illegal.bch", "match": "((\\.\\s*){4,})|((/\\s*){2,})" },
+				{ "name": "string.other.bch", "match": "(\\b[\\w]+\\b)|([\\.]+)" },
+				{ "name": "invalid.illegal.bch", "match": "[^\\s/>]" }
+			]
+		}
+	}
+}

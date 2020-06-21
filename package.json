@@ -1,0 +1,67 @@
+{
+    "name": "bulb-chain-language",
+    "displayName": "Bulb Chain Language",
+    "description": "Bulb Chain is a toy language made to improve my TypeScript programming skill.",
+    "publisher": "dlOuOlb",
+    "homepage": "http://github.com/dlOuOlb/bulb-chain-language/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dlOuOlb/bulb-chain-language.git"
+    },
+    "author": {
+        "name": "Ranny Clover",
+        "url": "http://twitter.com/0xAE20C480"
+    },
+    "license": "GNU General Public License v3.0",
+    "version": "0.0.4",
+    "engines": {
+        "vscode": "^1.36.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "bulb-chain",
+                "aliases": [
+                    "Bulb Chain"
+                ],
+                "extensions": [
+                    ".bch"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "bulb-chain",
+                "scopeName": "source.bch",
+                "path": "./syntaxes/bch.tmLanguage.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "bulb.run",
+                "title": "Bulb Chain: Run"
+            }
+        ]
+    },
+    "main": "./outputs/extension.js",
+    "icon": "icon.png",
+    "activationEvents": [
+        "onCommand:bulb.run"
+    ],
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile"
+    },
+    "dependencies": {
+        "@types/fs-extra": "^8.0.0",
+        "@types/vscode": "^1.36.0",
+        "fs-extra": "^8.1.0"
+    }
+}

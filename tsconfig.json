@@ -1,0 +1,21 @@
+{
+	"compilerOptions":
+	{
+		"module": "commonjs",
+		"target": "esnext",
+		"moduleResolution": "node",
+		"rootDir": "sources",
+		"outDir": "outputs",
+		"sourceMap": true,
+
+		"strict": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"removeComments": true
+	},
+	"include": [ "sources" ],
+	"exclude": [ "node_modules" ]
+}
